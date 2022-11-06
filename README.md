@@ -82,7 +82,7 @@ Changes include:
 
   * Formatter no longer attempts to change indentation or line endings (or anything else) inside comments.
 
-Binaries are available. The 64-bit Windows build is from FPC. The 32-bit Windows version is built with Delphi. Other operating systems should build with little to no changes.
+Binaries are [available](https://github.com/quadroid/jcf-pascal-format/releases "Download"). The 64-bit Windows build is from FPC. The 32-bit Windows version is built with Delphi. Other operating systems should build with little to no changes.
 
 How to test:
 
