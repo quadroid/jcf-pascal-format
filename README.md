@@ -84,6 +84,12 @@ Changes include:
 
 Binaries are available. The 64-bit Windows build is from FPC. The 32-bit Windows version is built with Delphi. Other operating systems should build with little to no changes.
 
+How to test:
+
+```sh
+pascal-format -config=pascal-format.new.cfg -out test.fmt.pas test.pas
+```
+
 Do whatever you want with this. Original description follows.
 
 # Jedi Code Formatter CLI
