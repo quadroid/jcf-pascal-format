@@ -202,6 +202,7 @@ begin
   fbYesAll := False;
   fbHasNamedConfigFile := False;
   fsConfigFileName := '';
+  mbOutFilePath := False;
 
   for liLoop := 1 to ParamCount do
   begin
