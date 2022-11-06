@@ -1,6 +1,6 @@
 # Pascal Code Formatter (Quadroid JCF Fork)
 
-My fork of Jedi Code Formatter that I intended to slightly modify for better indentation, but gave up shortly after realizing how impossible it is to get around in its complex and completely undocumented code.
+My fork of Jedi Code Formatter that I intended to slightly modify for better indentation, but gave up shortly after realizing how impossible it is to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases without breaking something else somewhere.
 
 Changes include:
 
@@ -81,6 +81,8 @@ Changes include:
     ```
 
   * Formatter no longer attempts to change indentation or line endings (or anything else) inside comments.
+
+Binaries are available. The 64-bit Windows build is from FPC. The 32-bit Windows version is built with Delphi. Other operating systems should build with little to no changes.
 
 Do whatever you want with this. Original description follows.
 
