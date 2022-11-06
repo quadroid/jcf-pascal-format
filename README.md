@@ -16,6 +16,12 @@ Changes include:
     var I := 42;
     ```
 
+    Inside `for` statement:
+
+    ```pascal
+    for var I := Low (myArray) to High (myArray) do
+    ```
+
     Source files with inline variables no longer cause formatter to fail.
 
   * New option `IndentCaseLabels` to control indentation of `case` label statements independently from the whole `case` block. E.g., with `IndentCaseLabels` set to `True` (default):
@@ -80,7 +86,11 @@ Changes include:
     end;
     ```
 
-  * Formatter no longer attempts to change indentation or line endings (or anything else) inside comments.
+  * Formatter now correctly processes line endings inside comments and also avoids formatting control statements with comments in-between them.
+
+  * The formatter source code has been processed through the formatter itself to validate correct function “in the wild”.
+
+Unless I forgot something, all my changes are “tagged” with `// fix:` comments.
 
 Binaries are [available](https://github.com/quadroid/jcf-pascal-format/releases "Download"). The 64-bit Windows build is from FPC. The 32-bit Windows version is built with Delphi. Other operating systems should build with little to no changes.
 
@@ -90,7 +100,9 @@ How to test:
 pascal-format -config=pascal-format.new.cfg -out test.fmt.pas test.pas
 ```
 
-So here it is in case if someone else wants to waste their time trying to make this thing smarter. Original description follows.
+*TODO:* with GUI now removed, debugging parsed AST is impossible, unless doing it by trial and error. The AST view needs to be rewritten to output in textual form, or, better yet, simply remade in LCL (but without Delphi support). Should be fairly simple to do given it’s basically just a tree view on an empty form.
+
+So here it is in case if someone else wants to waste their time and continue trying to make this thing smarter. Original description follows.
 
 # Jedi Code Formatter CLI
 
