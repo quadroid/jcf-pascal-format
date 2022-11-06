@@ -192,7 +192,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="..\Process\Warnings\WarnDestroy.pas"/>
         <DCCReference Include="..\Process\Warnings\WarnEmptyBlock.pas"/>
         <DCCReference Include="..\Process\Warnings\Warning.pas"/>
-        <DCCReference Include="JcfVersionConsts.pas"/>
         <DCCReference Include="..\Parse\TokenUtils.pas"/>
         <DCCReference Include="..\Process\Spacing\NoSpaceBefore.pas"/>
         <DCCReference Include="..\Process\Spacing\NoSpaceAfter.pas"/>
@@ -260,15 +259,16 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="..\Process\Transform\SortUsesData.pas"/>
         <DCCReference Include="..\Process\Capitalisation\IdentifierCaps.pas"/>
         <DCCReference Include="..\Process\Warnings\WarnUnusedParam.pas"/>
+        <DCCReference Include="..\Process\Spacing\MoveSpaceToBeforeColon.pas"/>
         <DCCReference Include="..\Settings\SetAsm.pas"/>
         <DCCReference Include="..\Process\Returns\RemoveReturnsAfter.pas"/>
         <DCCReference Include="..\Process\Indent\IndentAsmParam.pas"/>
         <DCCReference Include="..\Parse\AsmKeywords.pas"/>
         <DCCReference Include="..\Utils\JcfUnicodeFiles.pas"/>
-        <DCCReference Include="..\CommandLineReturnCode.pas"/>
-        <DCCReference Include="..\CommandLineConstants.pas"/>
-        <DCCReference Include="..\StatusMessageReceiver.pas"/>
-        <DCCReference Include="..\Process\Spacing\MoveSpaceToBeforeColon.pas"/>
+        <DCCReference Include="CommandLineReturnCode.pas"/>
+        <DCCReference Include="CommandLineConstants.pas"/>
+        <DCCReference Include="StatusMessageReceiver.pas"/>
+        <DCCReference Include="JcfVersionConsts.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
