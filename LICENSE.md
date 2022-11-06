@@ -25,7 +25,8 @@ SOFTWARE.
 
 * * *
 
-The initial developer is Anthony Steele. The original license is MPL 1.1.
+The initial developer is Anthony Steele. The original license
+is Mozilla Public License version 1.1.
 
 ```
                           MOZILLA PUBLIC LICENSE

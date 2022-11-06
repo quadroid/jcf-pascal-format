@@ -1,6 +1,6 @@
 # Pascal Code Formatter (Quadroid JCF Fork)
 
-My fork of JEDI Code Formatter that I intended to slightly modify for better indentation, but gave up shortly after realizing how impossible it is to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases without breaking something else somewhere.
+My fork of JEDI Code Formatter that I intended to slightly modify for better indentation, but gave up on shortly after, realizing how impossible it is to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases in the AST without breaking something else somewhere.
 
 Changes include:
 
@@ -90,7 +90,7 @@ How to test:
 pascal-format -config=pascal-format.new.cfg -out test.fmt.pas test.pas
 ```
 
-Do whatever you want with this. Original description follows.
+So here it is in case if someone else wants to waste their time trying to make this thing smarter. Original description follows.
 
 # Jedi Code Formatter CLI
 
