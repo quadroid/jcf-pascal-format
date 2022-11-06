@@ -1,6 +1,6 @@
 # Pascal Code Formatter (Quadroid JCF Fork)
 
-My fork of Jedi Code Formatter that I intended to slightly modify for better indentation, but gave up shortly after realizing how impossible it is to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases without breaking something else somewhere.
+My fork of JEDI Code Formatter that I intended to slightly modify for better indentation, but gave up shortly after realizing how impossible it is to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases without breaking something else somewhere.
 
 Changes include:
 
@@ -97,6 +97,8 @@ Do whatever you want with this. Original description follows.
 I (Bee Jay) took [Jedi Code Formatter](http://jedicodeformat.sourceforge.net/) (JCF) from [Lazarus IDE repository](https://github.com/graemeg/lazarus/tree/upstream/components/jcf2) and made it as CLI (command line interface) version by removing all the GUI (graphical user interface) parts from the original GUI version. The CLI version can be used as Pascal code formatter in [Visual Studio Code](https://code.visualstudio.com/), or as backend engine of an online [Pascal code beautifier](https://pak.lebah.web.id/jcf).
 
 Original: a copy (sometimes modified) of r823 jcf2 svn tree: https://jedicodeformat.svn.sourceforge.net/svnroot/jedicodeformat/trunk/CodeFormat/Jcf2
+
+Original author: Anthony Steele.
 
 Original license: MPL 1.1.
 

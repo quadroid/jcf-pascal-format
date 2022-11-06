@@ -25,7 +25,7 @@ SOFTWARE.
 
 * * *
 
-Original license follows:
+The initial developer is Anthony Steele. The original license is MPL 1.1.
 
 ```
                           MOZILLA PUBLIC LICENSE
