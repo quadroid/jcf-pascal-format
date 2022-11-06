@@ -173,6 +173,7 @@ var
 
   fbYesAll: boolean;
   lsPath: string;
+  lsPathOut: string;
 
   lcStatus: TStatusMesssageReceiver;
 
@@ -191,6 +192,7 @@ procedure ParseCommandLine;
 var
   liLoop: integer;
   lsOpt:  string;
+  mbOutFilePath: boolean;
 begin
   fbCmdLineShowHelp := (ParamCount = 0);
   fbQuietFail := False;
@@ -211,10 +213,17 @@ begin
     begin
       // must be a path
       lsPath := StrTrimQuotes(lsOpt);
+      if mbOutFilePath then
+      begin
+        mbOutFilePath := False;
+        lsPathOut := lsPath;
+        lsPath := '';
+      end;
       continue;
     end;
 
     lsOpt := StripParamPrefix(lsOpt);
+    mbOutFilePath := False;
 
     if lsOpt = '?' then
     begin
@@ -232,6 +241,7 @@ begin
     begin
       fbHasBackupMode     := True;
       feCmdLineBackupMode := cmSeparateOutput;
+      mbOutFilePath := True;
     end else if AnsiSameText(lsOpt, 'backup') then
     begin
       fbHasBackupMode     := True;
@@ -310,6 +320,7 @@ begin
     lcConvert.SourceMode := feCmdLineSourceMode;
     lcConvert.BackupMode := feCmdLineBackupMode;
     lcConvert.Input := lsPath;
+    lcConvert.Output := lsPathOut;
     // do it!
     lcConvert.Convert;
 

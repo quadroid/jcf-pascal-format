@@ -30,10 +30,10 @@ See http://www.gnu.org/licenses/gpl.html
 interface
 
 const
-  PROGRAM_VERSION   = '2.45';
-  PROGRAM_HOME_PAGE = 'https://github.com/quadroid/pascal-format';
-  PROGRAM_SOURCEFORGE_HOME_PAGE = 'https://github.com/quadroid/pascal-format';
-  PROGRAM_SVN_TRUNK = 'https://github.com/quadroid/pascal-format.git';
+  PROGRAM_VERSION   = '2.46';
+  PROGRAM_HOME_PAGE = 'https://github.com/quadroid/jcf-pascal-format';
+  PROGRAM_SOURCEFORGE_HOME_PAGE = 'https://github.com/quadroid/jcf-pascal-format';
+  PROGRAM_SVN_TRUNK = 'https://github.com/quadroid/jcf-pascal-format.git';
 
 implementation
 

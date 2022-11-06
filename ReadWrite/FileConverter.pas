@@ -7,7 +7,7 @@
 The Original Code is Converter.pas, released January 2001.
 The Initial Developer of the Original Code is Anthony Steele.
 Portions created by Anthony Steele are Copyright (C) 1999-2008 Anthony Steele.
-All Rights Reserved. 
+All Rights Reserved.
 Contributor(s): Anthony Steele.
 
 The contents of this file are subject to the Mozilla Public License Version 1.1
@@ -20,7 +20,7 @@ See the License for the specific language governing rights and limitations
 under the License.
 
 Alternatively, the contents of this file may be used under the terms of
-the GNU General Public License Version 2 or later (the "GPL") 
+the GNU General Public License Version 2 or later (the "GPL")
 See http://www.gnu.org/licenses/gpl.html
 ------------------------------------------------------------------------------*)
 {*)}
@@ -31,7 +31,7 @@ interface
 
 uses
   { delphi } Classes,
-  { local } Converter, 
+  { local } Converter,
   ConvertTypes;
 
 { AFS 7 July 04
@@ -55,6 +55,7 @@ type
 
     { properties }
     fsInput: string;
+    fsOutput: string;
     fsOriginalFileName: string;
     fsOutFileName: string;
     fbYesAll: boolean;
@@ -84,7 +85,7 @@ type
     constructor Create;
     destructor Destroy; override;
 
-    procedure ProcessFile(const psInputFileName: string);
+    procedure ProcessFile(const psInputFileName, psOutputFileName: string);
 
     procedure Convert;
     procedure Clear;
@@ -96,6 +97,7 @@ type
     property BackupMode: TBackupMode read peBackupMode write peBackupMode;
     property SourceMode: TSourceMode read peSourceMode write peSourceMode;
     property Input: string read fsInput write fsInput;
+    property Output: string read fsOutput write fsOutput;
 
     property YesAll: boolean read fbYesAll write fbYesAll;
     property GuiMessages: Boolean read fbGuiMessages write fbGuiMessages;
@@ -174,9 +176,9 @@ begin
   result := True;
 end;
 
-procedure TFileConverter.ProcessFile(const psInputFileName: string);
+procedure TFileConverter.ProcessFile(const psInputFileName, psOutputFileName: string);
 
-  function GetOutputFileName(const psIn: string;
+  function GetOutputFileName(const psIn, psOut: string;
     peMode: TBackupMode): string;
   var
     lsExt: string;
@@ -199,7 +201,10 @@ procedure TFileConverter.ProcessFile(const psInputFileName: string);
       if peMode = cmInPlaceWithBackup then
         Result := Result + '.' + 'bak' + lsExt
       else
-        Result := Result + '.' + 'fmt' + lsExt;
+        if psOutputFileName <> '' then
+          Result := psOutputFileName
+        else
+          Result := Result + '.' + 'fmt' + lsExt;
     end
     else
       raise Exception.Create('TCodeFormatSettings.Output: bad backup mode ');
@@ -240,9 +245,9 @@ begin
    that check the file timestamp
   }
   lbFileIsChanged := (fcConverter.InputCode <> fcConverter.OutputCode);
-  lsOut := GetOutputFileName(psInputFileName, peBackupMode);
+  lsOut := GetOutputFileName(psInputFileName, psOutputFileName, peBackupMode);
 
-  // check if an output/backup file must be removed 
+  // check if an output/backup file must be removed
   if BackupMode <> cmInplace then
   begin
     if lsOut = '' then
@@ -289,7 +294,7 @@ begin
     ;
   end;
 
-  // now, depending on mode, write the output to new/old file 
+  // now, depending on mode, write the output to new/old file
   case BackupMode of
   cmInPlace:
   begin
@@ -361,7 +366,7 @@ begin
 
     for liLoop := 0 to lsNames.Count - 1 do
     begin
-      ProcessFile(lsDir + lsNames[liLoop]);
+      ProcessFile(lsDir + lsNames[liLoop], '');
       if fbAbort then
         break;
     end;
@@ -434,7 +439,7 @@ begin
   {$ELSE}
   lsSearch := psDir + '*.*';
   {$ENDIF}
-  
+
   FillChar(rSearch{%H-}, Sizeof(TSearchRec), 0);
   bDone := (FindFirst(lsSearch, faDirectory, rSearch) <> 0);
 
@@ -461,7 +466,7 @@ begin
   { process file(s) }
   case SourceMode of
   fmSingleFile:
-    ProcessFile(Input);
+    ProcessFile(Input, Output);
   fmDirectory, fmDirectoryRecursive:
     ProcessDirectory(Input)
   else
