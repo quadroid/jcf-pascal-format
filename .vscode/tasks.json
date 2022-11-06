@@ -1,0 +1,100 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    { // shortcut: cmd+shift+B (run build task)
+      "label"  : "pascal-format: Build Release",
+      "type"   : "shell",
+      "group"  : {
+        "kind"     : "build",
+        "isDefault": true,
+      },
+      "options": {
+        "cwd"  : "App",
+      },
+      "command": "fpc",
+      "args"   : [
+        "pascal_format.dpr", // source code file
+        "-Px86_64", // target platform 64-bit
+        "-Mobjfpc", // object pascal mode
+        "-Schi",    // pascal syntax setting
+        "-CX",      // generated code setting
+        "-O3",      // code optimization setting
+        "-XXs",     // executable setting
+        "-B",       // always build all
+        "-v",       // verbose message
+        "-Fi../Include",  // include file path
+        "-Fu../lazutils", // unit file path
+        "-FU../Output",   // unit output path
+        "-FE..",    // executable output path
+      ],
+      "problemMatcher": []
+    },
+    { // shortcut: cmd+shift+R (run test task)
+      "label": "pascal-format: Test CLI Program",
+      "type" : "shell",
+      "group": {
+        "kind"     : "test",
+        "isDefault": true,
+      },
+      "command": "pascal_format",
+      "args"   : [
+        "test.pas",
+        "-clarify",
+        "-inplace",
+        "-config=pascal-format.cfg"
+      ],
+      "presentation": {
+        // open test.pas file to see the result
+        "reveal": "never"
+      },
+      "problemMatcher": []
+    },
+    { // shortcut: none
+      "label"  : "pascal-format: Clean Files",
+      "type"   : "shell",
+      "command": "rm",
+      "options": {
+        "cwd"  : "Output",
+      },
+      "args"   : [
+        //"pascal_format", // executable file
+        "*.a",   // generated linker file
+        "*.o",   // generated object file
+        "*.s",   // generated assembler file
+        "*.out", // generated formatted code
+        "*.ppu", // generated unit file
+        "*.res", // generated resource file
+        "*.rsj", // generated resource file
+        "*.sh",  // generated script code
+      ],
+      "problemMatcher": []
+    },
+    { // shortcut: none
+      "label"  : "pascal-format: Open CLI Project",
+      "type"   : "shell",
+      "command": "code",
+      "args"   : [
+        "App/pascal_format.lpi",
+      ],
+      "presentation": {
+        "reveal"    : "never"
+      },
+      "problemMatcher": []
+    },
+    { // shortcut: none
+      "label"  : "pascal-format: Deploy Executable",
+      "type"   : "shell",
+      "command": "mv",
+      "args"   : [
+        "pascal_format",
+        "~/Documents/pascal/pascal-format",
+      ],
+      "presentation": {
+        "reveal"    : "silent"
+      },
+      "problemMatcher": []
+    },
+  ],
+}

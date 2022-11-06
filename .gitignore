@@ -1,0 +1,12 @@
+test.fmt.pas
+__history/
+__recovery/
+backup/
+release/
+debug/
+*.res
+*.bak
+*.exe
+*.dcu
+*.ppu
+*.o
