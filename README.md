@@ -104,7 +104,9 @@ pascal-format -config=pascal-format.new.cfg -out test.fmt.pas test.pas
 
 *TODO:* with GUI now removed, debugging parsed AST is impossible, unless doing it by trial and error. The AST view needs to be rewritten to output in textual form, or, better yet, simply remade in LCL (but without Delphi support). Should be fairly simple to do given it’s basically just a tree view on an empty form.
 
-So here it is in case if someone else wants to waste their time and continue trying to make this thing smarter. Original description follows.
+So here it is in case if someone else wants to waste their time and continue trying to make this thing smarter.
+
+Original description follows.
 
 # Jedi Code Formatter CLI
 
