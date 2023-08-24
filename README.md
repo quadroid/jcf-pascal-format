@@ -1,6 +1,8 @@
 # Pascal Code Formatter (Quadroid JCF Fork)
 
-My hard fork of [JEDI Code Formatter CLI](https://github.com/git-bee/jcf-cli) from [Bee Jay](https://github.com/git-bee), which itself is a fork of Lazarus JCF, that I intended to slightly modify for better indentation, but gave up on shortly after, realizing how impossible it is to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases in the AST without breaking something else somewhere. (The updated VSCode [extension](https://github.com/quadroid/vscode-pascal-formatter "Modified extension") that works with this version is also available, [pull request](https://github.com/alefragnani/vscode-pascal-formatter/pull/52 "Upvote").)
+My hard fork of [JEDI Code Formatter CLI](https://github.com/git-bee/jcf-cli) from [Bee Jay](https://github.com/git-bee), which itself is a fork of Lazarus JCF, that I slightly improved with better indentation and much needed support for modern Delphi variable declarations. It was really hard to get around in its ancient, complex, and almost completely undocumented code. Still, I managed to implement what I wanted. It’s just hardly can be extended or improved any further given how tricky input source code can be and how difficult it is to target individual edge cases in the AST without breaking something else somewhere. In the future it would be better to switch to a formatter that doesn’t require deep parsing of the source.
+
+(The updated VSCode [extension](https://github.com/quadroid/vscode-pascal-formatter "Modified extension") that works with this version is also available, [pull request](https://github.com/alefragnani/vscode-pascal-formatter/pull/52 "Upvote").)
 
 Changes include:
 
