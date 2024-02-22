@@ -121,28 +121,26 @@ Original license: MPL 1.1.
 ## How To Build Using Lazarus
 
 1. You must have [Lazarus IDE](http://lazarus-ide.org) already installed on your system.
-2. Clone or download this `jcf-cli` GitHub repo into your own folder.
-3. Start your Lazarus IDE and open `jcf.lpi` project within `jcf-cli/CommandLine/Lazarus` folder.
+2. Clone or download this `jcf-pascal-format` GitHub repo into your own folder.
+3. Start your Lazarus IDE and open `pascal_format.lpi` project within `jcf-pascal-format/App` folder.
 4. Build it via Lazarus' **Run** → **Build** menu.
 5. Wait while Lazarus is building the JCF project.
-6. Take the executable `JCF` file from `jcf-cli/Output/Lazarus` folder along with the `jcf.xml` configuration file.
-7. Just to make sure, test it from Terminal using `./JCF -?` command. It should show the usage manual.
+6. Take the executable `pascal-format` file from `jcf-pascal-format` folder along with the `pascal-format.cfg` configuration file.
+7. Just to make sure, test it from Terminal using `./pascal-format -?` command. It should show the usage manual.
 
 ## How To Build Using VS Code
 
 1. You must have both [Free Pascal](http://freepascal.org) compiler and [VS Code](https://code.visualstudio.com) already installed on your system.
-2. Clone or download this `jcf-cli` GitHub repo into your own folder.
-3. Start your VS Code and open `jcf.lpr` project within `jcf-cli/CommandLine/Lazarus` folder.
-4. Build it via VS Code's **Tasks** → **Run Task...** → **JCF: Build Release** menu.
-5. Wait while FPC is building the JCF project.
-6. Open `test.pas` file from `jcf-cli` folder.
-7. Test `JCF` program using **Tasks** → **Run Task...** → **JCF: Test CLI Program** menu and you should see the result in the `test.pas` file.
+2. Clone or download this `jcf-pascal-format` GitHub repo into your own folder.
+3. Start your VS Code and open `pascal_format.lpi` project within `jcf-pascal-format/App` folder.
+4. Build it via VS Code's **Tasks** → **Run Task...** → **pascal-format: Build Release** menu.
+5. Wait while FPC is building the jcf-pascal-format project.
+6. Open `test.pas` file from `jcf-pascal-format` folder.
+7. Test `JCF` program using **Tasks** → **Run Task...** → **pascal-format: Test CLI Program** menu and you should see the result in the `test.pas` file.
 
-> **Note:** I've included the executable file for Linux, Mac, and Windows in [`Output/Lazarus`](Output/Lazarus) folder so you don't need to build it yourself. However, it's **not** guaranteed using the latest modification. 😊
+## How To Use jcf-pascal-format in VS Code
 
-## How To Use JCF in VS Code
-
-1. Copy the `JCF` **and** `jcf.xml` config files into your Pascal workspace folder.
+1. Copy the `pascal-format` **and** `pascal-format.cfg` config files into your Pascal workspace folder.
 2. Create a new VS Code task or open the `tasks.json` if you already have one.
 3. Copy the task example below and paste it into your `tasks.json` file.
 
@@ -150,12 +148,12 @@ Original license: MPL 1.1.
   {
     "label"  : "JCF: Beautify Code",
     "type"   : "shell",
-    "command": "./JCF",
+    "command": "./pascal-format",
     "args": [
       "${file}",
       "-clarify",
       "-inplace",
-      "-config=jcf.xml"
+      "-config=pascal-format.xml"
     ],
     "presentation": {
       "reveal": "never"
@@ -165,7 +163,7 @@ Original license: MPL 1.1.
 ```
 4. It's a task to beautify Pascal code.
 5. If you need a task to obfuscate code, simply make another task using the code above, but then change `-clarify` arg into `-obfuscate`.
-6. Save your `tasks.json`. Now you should have new JCF's tasks in your tasks list.
+6. Save your `tasks.json`. Now you should have new pascal-format's tasks in your tasks list.
 
 ## The Problem With JCF
 
