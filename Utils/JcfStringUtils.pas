@@ -165,9 +165,8 @@ uses
   Windows, ShellApi;
 {$else}
 {$ifdef Unix}
-  //Unix,
+  Unix;
 {$endif}
-  //LCLIntf;
 {$endif}
 
 {$IFNDEF DELPHI12}

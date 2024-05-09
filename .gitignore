@@ -10,3 +10,5 @@ debug/
 *.dcu
 *.ppu
 *.o
+pascal-format
+
