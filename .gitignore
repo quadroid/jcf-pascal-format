@@ -4,9 +4,10 @@ __recovery/
 backup/
 release/
 debug/
+*.exe
+*.cmd
 *.res
 *.bak
-*.exe
 *.dcu
 *.ppu
 *.o
