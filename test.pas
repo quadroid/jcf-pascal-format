@@ -11,6 +11,11 @@ type
     ['{5E3C2BCA-56C8-46DE-959F-338AF5F69C1A}']
     procedure proc;
   end;
+  
+type TMyType = class
+  [Subscribe]
+  protected procedure proce(var params: TParams);
+end;  
 
 implementation
 

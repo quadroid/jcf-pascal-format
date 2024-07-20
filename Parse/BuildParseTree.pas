@@ -4278,6 +4278,13 @@ begin
       lc := fcTokenList.FirstSolidToken;
     end;
 
+	{ attribute then visibility then procedure/function }
+    if lc.TokenType in (ClassVisibility) then
+    begin
+      RecogniseClassVisibility();
+      lc := fcTokenList.FirstSolidToken;
+    end;
+
     case lc.TokenType of
     ttProcedure:
       RecogniseProcedureHeading(False, True);
