@@ -49,7 +49,9 @@ type
     fiUserTag: integer;
 
     function GetChildNodes(const piIndex: integer): TParseTreeNode;
+    procedure Print(prefix: string; childrenPrefix: string); overload;
   protected
+
   public
     constructor Create;
     destructor Destroy; override;
@@ -131,6 +133,7 @@ type
     function IsOnRightOf(const peRootNodeType, peNode: TParseTreeNodeType): boolean; overload;
 
     function Describe: string; virtual;
+    procedure Print; overload;
 
     property Parent: TParseTreeNode read fcParent write fcParent;
     property ChildNodes[const piIndex: integer]: TParseTreeNode read GetChildNodes;
@@ -147,7 +150,7 @@ type
 
 implementation
 
-uses SysUtils, Math{$ifndef FPC}, System.Types{$endif};
+uses SysUtils, Math{$ifndef FPC}, System.Types{$endif}, LazLogger;
 
 constructor TParseTreeNode.Create;
 begin
@@ -160,6 +163,8 @@ begin
   fcChildNodes.OwnsObjects := True;
 
   fcNestings := TNestingLevelList.Create;
+
+  DebugLogger.LogName := ExtractFilePath(ParamStr(0))+'TParseTreeNode.txt';
 end;
 
 destructor TParseTreeNode.Destroy;
@@ -269,6 +274,34 @@ begin
   Result := NodeTypeToString(NodeType);
 end;
 
+procedure TParseTreeNode.Print(prefix: string; childrenPrefix: string);
+var
+  liLoop: integer;
+  lChild: TParseTreeNode;
+  buffer: string;
+begin
+  buffer:= prefix;
+  buffer:= buffer + Describe;
+  debugln(buffer);
+  for liLoop := 0 to ChildNodeCount - 1 do
+  begin
+    lChild := ChildNodes[liLoop];
+    if liLoop <> ChildNodeCount - 1 then
+    begin
+       lChild.Print(childrenPrefix + '├── ', childrenPrefix + '│   ');
+    end
+    else
+    begin
+       lChild.Print(childrenPrefix + '└── ', childrenPrefix + '    ');
+    end;
+  end;
+
+end;
+
+procedure TParseTreeNode.Print;
+begin
+  Print('', '');
+end;
 
 function TParseTreeNode.MaxDepth: integer;
 var

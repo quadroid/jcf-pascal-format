@@ -137,12 +137,12 @@ const
     [ttComment, ttNumber, ttQuotedLiteralString, ttUnknown, ttPunctuation, ttIdentifier];
 begin
   if TokenType = ttIdentifier then
-    Result := SourceCode
+    Result := '"' + SourceCode + '"'
   else
   begin
     Result := TokenTypeToString(TokenType);
     if (TokenType in StructuredTokens) then
-      Result := Result + ' ' + SourceCode;
+      Result := Result + ' "' + SourceCode + '"';
   end;
 end;
 
