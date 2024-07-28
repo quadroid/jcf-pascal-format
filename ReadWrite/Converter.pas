@@ -175,6 +175,8 @@ begin
         fcBuildParseTree.TokenList := lcTokenList;
         fcBuildParseTree.BuildParseTree;
 
+        //fcBuildParseTree.Root.Print;
+
       except
         on E: Exception do
         begin
