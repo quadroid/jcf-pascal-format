@@ -45,6 +45,7 @@ const
     'Mode of operation:' + NativeLineBreak +
     '  -obfuscate: obfuscate mode or' + NativeLineBreak +
     '  -clarify: clarify mode.' + NativeLineBreak +
+    '  -debug: print parsed token tree.' + NativeLineBreak +
     '   Default: clarify.' + NativeLineBreak +
     NativeLineBreak +
     'Mode of source:' + NativeLineBreak +

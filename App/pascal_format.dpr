@@ -161,6 +161,7 @@ var
   fbCmdLineShowHelp: boolean;
   fbQuietFail: boolean;
   fbCmdLineObfuscate: boolean;
+  fbCmdLineDebug: boolean;
 
   fbHasSourceMode:     boolean;
   feCmdLineSourceMode: TSourceMode;
@@ -197,6 +198,7 @@ begin
   fbCmdLineShowHelp := (ParamCount = 0);
   fbQuietFail := False;
   fbCmdLineObfuscate := False;
+  fbCmdLineDebug := False;
   fbHasSourceMode := False;
   fbHasBackupMode := False;
   fbYesAll := False;
@@ -234,6 +236,8 @@ begin
       fbCmdLineObfuscate := True
     else if AnsiSameText(lsOpt, 'clarify') then
       fbCmdLineObfuscate := False
+    else if AnsiSameText(lsOpt, 'debug') then
+      fbCmdLineDebug := True
     else if AnsiSameText(lsOpt, 'inplace') then
     begin
       fbHasBackupMode     := True;
@@ -317,7 +321,7 @@ begin
     lcConvert.OnStatusMessage := lcStatus.OnReceiveStatusMessage;
     // use command line settings
     lcConvert.YesAll := fbYesAll;
-    lcConvert.GuiMessages := False;
+    lcConvert.GuiMessages := fbCmdLineDebug;
     lcConvert.SourceMode := feCmdLineSourceMode;
     lcConvert.BackupMode := feCmdLineBackupMode;
     lcConvert.Input := lsPath;

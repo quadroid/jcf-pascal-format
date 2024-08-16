@@ -113,6 +113,7 @@ uses
   JcfSettings, JcfStringUtils, ParseError, PreProcessorParseTree,
   SourceToken, SourceTokenList, TreeWalker, VisitSetNesting, VisitSetXY;
 
+
 function StrInsert(const psSub, psMain: String; const piPos: Integer): String;
 begin
   Result := StrLeft(psMain, piPos - 1) + psSub + StrRestOf(psMain, piPos);
@@ -175,12 +176,14 @@ begin
         fcBuildParseTree.TokenList := lcTokenList;
         fcBuildParseTree.BuildParseTree;
 
-        //fcBuildParseTree.Root.Print;
+        if GuiMessages then
+          fcBuildParseTree.Root.Print('');
       except
         on E: Exception do
         begin
           fbConvertError := True;
           SendExceptionMessage(E);
+          fcBuildParseTree.Root.Print(FileName);
         end;
       end;
 
@@ -246,7 +249,6 @@ var
 begin
   lcTreeWalker := TTreeWalker.Create;
   try
-
     // apply a visit setXY first
     lcProcess := TVisitSetXY.Create;
     try
@@ -270,7 +272,6 @@ begin
     finally
       lcProcess.Free;
     end;
-
   finally
     lcTreeWalker.Free;
   end;

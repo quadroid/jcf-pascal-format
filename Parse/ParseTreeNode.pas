@@ -49,7 +49,7 @@ type
     fiUserTag: integer;
 
     function GetChildNodes(const piIndex: integer): TParseTreeNode;
-    procedure Print(prefix: string; childrenPrefix: string); overload;
+    procedure Print(var f: Text; const prefix, childrenPrefix: string); overload;
   protected
 
   public
@@ -133,7 +133,7 @@ type
     function IsOnRightOf(const peRootNodeType, peNode: TParseTreeNodeType): boolean; overload;
 
     function Describe: string; virtual;
-    procedure Print; overload;
+    procedure Print(const FileName: string); overload;
 
     property Parent: TParseTreeNode read fcParent write fcParent;
     property ChildNodes[const piIndex: integer]: TParseTreeNode read GetChildNodes;
@@ -150,7 +150,7 @@ type
 
 implementation
 
-uses SysUtils, Math{$ifndef FPC}, System.Types{$endif}, LazLogger;
+uses SysUtils{$ifndef FPC}, System.Types{$endif}, Math;
 
 constructor TParseTreeNode.Create;
 begin
@@ -163,8 +163,6 @@ begin
   fcChildNodes.OwnsObjects := True;
 
   fcNestings := TNestingLevelList.Create;
-
-  DebugLogger.LogName := ExtractFilePath(ParamStr(0)) + 'TParseTreeNode.txt';
 end;
 
 destructor TParseTreeNode.Destroy;
@@ -274,7 +272,7 @@ begin
   Result := NodeTypeToString(NodeType);
 end;
 
-procedure TParseTreeNode.Print(prefix: string; childrenPrefix: string);
+procedure TParseTreeNode.Print(var f: Text; const prefix, childrenPrefix: string);
 var
   liLoop: integer;
   lChild: TParseTreeNode;
@@ -282,24 +280,39 @@ var
 begin
   buffer := prefix;
   buffer := buffer + Describe;
-  debugln(buffer);
+  WriteLn(f, buffer);
   for liLoop := 0 to ChildNodeCount - 1 do
   begin
     lChild := ChildNodes[liLoop];
     if liLoop <> ChildNodeCount - 1 then
-    begin
-       lChild.Print(childrenPrefix + '├── ', childrenPrefix + '│   ');
-    end
+      lChild.Print(f, childrenPrefix + '├── ', childrenPrefix + '│   ')
     else
-    begin
-       lChild.Print(childrenPrefix + '└── ', childrenPrefix + '    ');
-    end;
+      lChild.Print(f, childrenPrefix + '└── ', childrenPrefix + '    ');
   end;
 end;
 
-procedure TParseTreeNode.Print;
+type
+  PText = ^Text;
+
+procedure TParseTreeNode.Print(const FileName: string);
+var
+  f: Text;
+  fpt: PText;
 begin
-  Print('', '');
+  if FileName <> '' then
+  begin
+    AssignFile(f, FileName + '.fmt.txt');
+    Rewrite(f);
+    fpt := @f;
+  end
+  else
+    fpt := @ErrOutput;
+  try
+    Print(fpt^, '', '');
+  finally
+    if FileName <> '' then
+      CloseFile(f);
+  end;
 end;
 
 function TParseTreeNode.MaxDepth: integer;
