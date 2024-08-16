@@ -2282,7 +2282,8 @@ begin
   // with type inference
   if inlineVar then
   begin
-    RecogniseIdentifier(false, idAllowDirectives);
+	// fix: inline list of variables
+    RecogniseIdentList(False);
     if fcTokenList.FirstSolidTokenType in AssignmentDirectives then
     begin
       // variable declaration with infered type
