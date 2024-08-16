@@ -11,11 +11,11 @@ type
     ['{5E3C2BCA-56C8-46DE-959F-338AF5F69C1A}']
     procedure proc;
   end;
-  
+
 type TMyType = class
   [Subscribe]
   protected procedure proce(var params: TParams);
-end;  
+end;
 
 implementation
 
@@ -31,11 +31,9 @@ function myFunction(aParam: string
 var i: integer;
 begin
   var inline_var_decl := 777;
-
-  // case for fix: inline list of variables
-     var inline_var_decl2,         inline_var_decl3: string;
-           var inline_var_decl5,             inline_var_decl6 := 888;
-var inline_var_decl2_string,         inline_var_decl3_string: string :=    'this is a string';		   
+     var inline_var_decl2,  inline_var_decl3: string;
+           var inline_var_decl5,  inline_var_decl6 := 888;
+var inline_var_decl2_string,  inline_var_decl3_string: string :=  'this is a string';
 
   for i := 1 to 10 do
     if i < 10 then write(i, ',')

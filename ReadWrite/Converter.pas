@@ -3,7 +3,7 @@
  Delphi Code formatter source code
 
 The Original Code is Converter.pas, released April 2000.
-The Initial Developer of the Original Code is Anthony Steele. 
+The Initial Developer of the Original Code is Anthony Steele.
 Portions created by Anthony Steele are Copyright (C) 1999-2008 Anthony Steele.
 All Rights Reserved.
 Contributor(s): Anthony Steele.
@@ -18,7 +18,7 @@ See the License for the specific language governing rights and limitations
 under the License.
 
 Alternatively, the contents of this file may be used under the terms of
-the GNU General Public License Version 2 or later (the "GPL") 
+the GNU General Public License Version 2 or later (the "GPL")
 See http://www.gnu.org/licenses/gpl.html
 ------------------------------------------------------------------------------*)
 {*)}
@@ -176,7 +176,6 @@ begin
         fcBuildParseTree.BuildParseTree;
 
         //fcBuildParseTree.Root.Print;
-
       except
         on E: Exception do
         begin

@@ -19,7 +19,7 @@ See the License for the specific language governing rights and limitations
 under the License.
 
 Alternatively, the contents of this file may be used under the terms of
-the GNU General Public License Version 2 or later (the "GPL") 
+the GNU General Public License Version 2 or later (the "GPL")
 See http://www.gnu.org/licenses/gpl.html
 ------------------------------------------------------------------------------*)
 {*)}
@@ -319,7 +319,7 @@ procedure TBuildParseTree.Clear;
 begin
   while fcStack.Count > 0 do
     fcStack.Pop;
-    
+
   FreeAndNil(fcRoot);
 end;
 
@@ -409,7 +409,7 @@ begin
       raise TEParseError.Create('Unexpected token, expected ' +
         DescribeTarget, lcCurrentToken);
   end;
-  
+
   Inc(fiTokenCount);
 
   { add trailing white space
@@ -1362,7 +1362,7 @@ begin
     inc(liBracketLevel);
     Inc(liIndex);
   end;
-  
+
   // look forward to find the first comma or semicolon
   while True do
   begin
@@ -1889,7 +1889,7 @@ begin
   lcType := fcTokenList.FirstSolidTokenType;
 
   if lcType = ttSemiColon then
-  
+
   else
   begin
     RecogniseRecordBody;
@@ -2282,7 +2282,7 @@ begin
   // with type inference
   if inlineVar then
   begin
-	// fix: inline list of variables
+    // fix: inline list of variables
     RecogniseIdentList(False);
     if fcTokenList.FirstSolidTokenType in AssignmentDirectives then
     begin
@@ -2313,7 +2313,7 @@ begin
         Recognise(ttDot);
         RecogniseIdentifier(false, idAllowDirectives);
       end;
-      
+
     end
     else
       RecogniseConstantExpression;
@@ -2518,7 +2518,7 @@ begin
         RecogniseGenericType()// a type constructor - specifying types for the generic
       // check for a generic type
     ;
-         
+
   end
 
   else
@@ -2854,7 +2854,7 @@ begin
       Recognise(ttSemicolon)
     else
       break;
-    
+
     RecogniseNotSolidTokens;
   end;
 
@@ -2903,7 +2903,7 @@ begin
 
       Recognise(fcTokenList.FirstSolidTokenType);
       RecogniseExpr(True);
-      
+
       PopNode;
     end;
   end
@@ -3028,7 +3028,7 @@ begin
   begin
     RecogniseInlineItem;
 
-    // floatdiv is the '/' char here 
+    // floatdiv is the '/' char here
     if fcTokenList.FirstSolidTokenType = ttFloatDiv then
       Recognise(ttFloatDiv);
   end;
@@ -4279,7 +4279,7 @@ begin
       lc := fcTokenList.FirstSolidToken;
     end;
 
-	{ attribute then visibility then procedure/function }
+    { attribute then visibility then procedure/function }
     if lc.TokenType in (ClassVisibility) then
     begin
       RecogniseClassVisibility();
@@ -4850,7 +4850,7 @@ begin
   if fcTokenList.FirstSolidTokenType = ttLessThan then
     RecogniseGenericType// a use not a decl
   ;
-  
+
 end;
 
 procedure TBuildParseTree.RecogniseAsmBlock;
@@ -5035,7 +5035,7 @@ begin
 
   AsmParam
     -> Ident
-    -> Ident(AsmExpr) 
+    -> Ident(AsmExpr)
     -> '@' Ident
     -> '&' Ident
     -> '[' AsmExpr ']'
@@ -5443,7 +5443,7 @@ end;
 
 procedure TBuildParseTree.RecogniseLiteralString;
 begin
-  RecogniseNotSolidTokens;  
+  RecogniseNotSolidTokens;
 
   PushNode(nLiteralString);
 
