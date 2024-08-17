@@ -2936,6 +2936,11 @@ begin
   else if lc.TokenType = ttSemicolon then
     // empty statement
     // this gets done later in common code Recognise(ttSemicolon);
+  else if lc.TokenType = ttConst then
+  begin
+    Recognise(ttConst);
+    RecogniseConstantDecl;
+  end
   // fix: inline `var`
   else if lc.TokenType = ttVar then
   begin
