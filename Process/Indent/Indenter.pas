@@ -420,6 +420,9 @@ begin
         // fix: not for inline variable declaration
         if (pt.TokenType = ttVar) and not pt.HasParentNode(nVarSection) then
           Inc(liIndentCount);
+
+        if (pt.TokenType = ttConst) and not pt.HasParentNode(nConstSection) then
+          Inc(liIndentCount);
       end;// outdent keywords that start and end the block
 
     { procedure formal params are not in the block }
