@@ -2293,6 +2293,16 @@ begin
   end
   else
     RecogniseIdentList(False);
+
+  // check if we are inside a for loop header
+  lc := fcTokenList.FirstSolidToken;
+  if lc.TokenType = ttIn then
+  begin
+    // Delphi 2005 syntax
+    PopNode;
+    Exit;
+  end;	
+	
   Recognise(ttColon);
   RecogniseType;
 
