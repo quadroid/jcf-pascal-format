@@ -36,6 +36,11 @@ begin
 var inline_var_decl2_string,  inline_var_decl3_string: string :=  'this is a string';
 
  const inline_const := 999;
+ 
+   for var currentField in fieldList do
+  begin
+                var inline_var_decl4: string = 'a string';
+	 end;
 
   for i := 1 to 10 do
     if i < 10 then write(i, ',')
