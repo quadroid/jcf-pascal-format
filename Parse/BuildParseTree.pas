@@ -2294,15 +2294,15 @@ begin
   else
     RecogniseIdentList(False);
 
-  // check if we are inside a for loop header
+  // fix: check if we are inside a for loop header
   lc := fcTokenList.FirstSolidToken;
   if lc.TokenType = ttIn then
   begin
-    // Delphi 2005 syntax
+    // Delphi 2005 `for var in` syntax
     PopNode;
     Exit;
-  end;	
-	
+  end;
+
   Recognise(ttColon);
   RecogniseType;
 
@@ -2946,12 +2946,7 @@ begin
   else if lc.TokenType = ttSemicolon then
     // empty statement
     // this gets done later in common code Recognise(ttSemicolon);
-  else if lc.TokenType = ttConst then
-  begin
-    Recognise(ttConst);
-    RecogniseConstantDecl;
-  end
-  // fix: inline `var`
+  // fix: inline `var` declaration
   else if lc.TokenType = ttVar then
   begin
 {$if false}
@@ -2973,6 +2968,12 @@ begin
 {$if false}
     PopNode;
 {$endif}
+  end
+  // fix: inline `const` declaration
+  else if lc.TokenType = ttConst then
+  begin
+    Recognise(ttConst);
+    RecogniseConstantDecl;
   end else
     raise TEParseError.Create('expected simple statement', lc);
 end;

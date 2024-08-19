@@ -20,7 +20,7 @@ See the License for the specific language governing rights and limitations
 under the License.
 
 Alternatively, the contents of this file may be used under the terms of
-the GNU General Public License Version 2 or later (the "GPL") 
+the GNU General Public License Version 2 or later (the "GPL")
 See http://www.gnu.org/licenses/gpl.html
 ------------------------------------------------------------------------------*)
 {*)}
@@ -421,6 +421,7 @@ begin
         if (pt.TokenType = ttVar) and not pt.HasParentNode(nVarSection) then
           Inc(liIndentCount);
 
+        // fix: not for inline constant declaration
         if (pt.TokenType = ttConst) and not pt.HasParentNode(nConstSection) then
           Inc(liIndentCount);
       end;// outdent keywords that start and end the block
