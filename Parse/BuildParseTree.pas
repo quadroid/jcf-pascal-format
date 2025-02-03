@@ -5395,6 +5395,10 @@ begin
     }
     if lc.TokenType = ttArray then
       RecogniseArrayType
+    else if lc.TokenType = ttProcedure then
+      RecogniseProcedureDecl(true)
+    else if lc.TokenType = ttFunction then
+      RecogniseFunctionDecl(true)
     else if AnonymousMethodNext then
       RecogniseAnonymousMethod
     else

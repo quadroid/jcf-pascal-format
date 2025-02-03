@@ -88,6 +88,13 @@ BEGIN
   write('Enter your name: '); //? input
   readln(s);
   writeln('Hello, ', s, '!'); //+ forgotten
+  
+  // anonymous function/procedure as parameter
+  var somevar: String := TSomeClass.create(
+  procedure
+  begin
+    var aVar: String;
+  end);
 
   //-readln; // unnecessary
   // TODO: to-do next
