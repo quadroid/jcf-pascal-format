@@ -35,7 +35,7 @@ begin
            var inline_var_decl5,  inline_var_decl6 := 888;
 var inline_var_decl2_string,  inline_var_decl3_string: string :=  'this is a string';
 
- const inline_const := 999;
+ const inline_const = 999;
 
    for var currentField in fieldList do
   begin
